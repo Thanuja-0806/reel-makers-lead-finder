@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Environment configurations (Contains sensitive API keys)
+.env
+server/.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Production Build
+client/dist/
+
+# System / IDE Files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
+
+# Windows Powershell wrappers (if temporary)
+powershell.cmd
+client/powershell.cmd
+server/powershell.cmd
