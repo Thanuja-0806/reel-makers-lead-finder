@@ -12,9 +12,11 @@ export default function ExportButton({ leads = [], city }) {
     const cleanCity = (city || 'City').trim().replace(/\s+/g, '_');
     const filename = `Reel_Makers_${cleanCity}.xlsx`;
 
+    const apiBaseUrl = import.meta.env.VITE_API_URL || '';
+
     try {
       // 1. Try Express Server Export Endpoint
-      const response = await fetch('/api/export', {
+      const response = await fetch(`${apiBaseUrl}/api/export`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ leads, city })

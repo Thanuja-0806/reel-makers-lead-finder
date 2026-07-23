@@ -44,9 +44,10 @@ export default function App() {
     setLeads([]);
 
     const searchId = `search_${Date.now()}`;
+    const apiBaseUrl = import.meta.env.VITE_API_URL || '';
 
     // Establish SSE Stream Connection for Live Terminal Updates
-    const eventSource = new EventSource(`/api/search/stream?searchId=${searchId}`);
+    const eventSource = new EventSource(`${apiBaseUrl}/api/search/stream?searchId=${searchId}`);
 
     eventSource.onmessage = (event) => {
       try {
@@ -85,7 +86,7 @@ export default function App() {
 
     // Execute Main API Search
     try {
-      const response = await fetch('/api/search', {
+      const response = await fetch(`${apiBaseUrl}/api/search`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ city: cleanCity, searchId, apiKeys })
